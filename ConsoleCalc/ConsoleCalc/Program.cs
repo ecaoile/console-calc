@@ -8,7 +8,7 @@ namespace ConsoleCalc
         static void Main(string[] args)
         {
             bool playAgain = false;
-            List<string> pastEqs = new List<string> {"","","","",""};
+            List<string> pastEqs = new List<string> {};
             int eqCounter = 0;
             double firstNumDbl = 0;
             double secondNumDbl = 0;
@@ -68,35 +68,27 @@ namespace ConsoleCalc
                     default:
                         break;
                 }
- 
-                if (eqCounter == 0)
+
+                if (eqCounter < 5)
                 {
-                    pastEqs[eqCounter] = eqString;
+                    pastEqs.Add(eqString);
                     eqCounter++;
-                    Console.WriteLine("\nYour equation:");
-                    Console.WriteLine(eqString);
                 }
 
+                if (eqCounter == 1)
+                    Console.WriteLine("\nYour equation:");
                 else
-                {
-
-                    if (eqCounter < 5)
-                    {
-                        pastEqs[eqCounter] = eqString;
-                        eqCounter++;
-                    }
-
-                    else
-                    {
-                        pastEqs.RemoveAt(0);
-                        pastEqs.Add(eqString);
-                    }
-
                     Console.WriteLine($"\nYour past {eqCounter} equations:");
-                    for (int i = 0; i < eqCounter; i++)
-                    {
-                        Console.WriteLine(pastEqs[i]);
-                    }
+                
+                if (eqCounter == 5)
+                {
+                    pastEqs.RemoveAt(0);
+                    pastEqs.Add(eqString);
+                }
+
+                for (int i = 0; i < eqCounter; i++)
+                {
+                    Console.WriteLine(pastEqs[i]);
                 }
 
                 Console.WriteLine("\nWould you like to enter another equation?");
