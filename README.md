@@ -13,8 +13,11 @@
 ## 2. Process and issues while doing this assignment:
 It took about 4 hours to finish this assignment. The logic was fairly intuitive for most of the program.
 I struggled at the end with figuring out how to delete the first equation and insert a new equation after
-the first 5 initial inputs. It turns out that I had to use a string list in order to be able to work with an array
-that can change in size since arrays themselves can't do so.
+the first 5 initial inputs. It turns out that I had to use a string list in order to be able to work with an 
+array that can change in size since arrays themselves can't do so. 
+I think because of the confusion at the very end, I learned the most from having to create a list instead of an 
+array along with having to keep my increment my counter at the right spots so that the equations and text would
+display how I wanted them to (avoiding the dreaded off by one error).
 
 ## 3. Resources used for this assignment:
 Prework tutorials:
