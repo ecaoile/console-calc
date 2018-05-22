@@ -10,7 +10,8 @@ namespace ConsoleCalc
             bool playAgain = false;
             List<string> pastEqs = new List<string> {"","","","",""};
             int eqCounter = 0;
-
+            double firstNumDbl = 0;
+            double secondNumDbl = 0;
             do
             {
                 Console.WriteLine("What would you like to do? Choose a number between 1 and 4.");
@@ -28,30 +29,40 @@ namespace ConsoleCalc
 
                 Console.WriteLine("\nPlease enter the first number.");
                 string firstNumStr = Console.ReadLine();
-                double firstNumDbl = Double.Parse(firstNumStr);
+               
+                while (!double.TryParse(firstNumStr, out firstNumDbl))
+                {
+                    Console.WriteLine($"{firstNumStr} is not a valid number. Please try again.");
+                    firstNumStr = Console.ReadLine();
+                }
 
-                Console.WriteLine("Please enter the second number.");
+                Console.WriteLine("\nPlease enter the second number.");
                 string secondNumStr = Console.ReadLine();
-                double secondNumbDbl = Double.Parse(secondNumStr);
+
+                while (!double.TryParse(secondNumStr, out secondNumDbl))
+                {
+                    Console.WriteLine($"{secondNumStr} is not a valid number. Please try again.");
+                    secondNumStr = Console.ReadLine();
+                }
 
                 double resultDbl = 0;
                 string eqString = "";
                 switch (opChoice)
                 {
                     case "1":
-                        resultDbl = firstNumDbl + secondNumbDbl;
+                        resultDbl = firstNumDbl + secondNumDbl;
                         eqString = $"{firstNumStr} + {secondNumStr} = {resultDbl.ToString()}";
                         break;
                     case "2":
-                        resultDbl = firstNumDbl - secondNumbDbl;
+                        resultDbl = firstNumDbl - secondNumDbl;
                         eqString = $"{firstNumStr} - {secondNumStr} = {resultDbl.ToString()}";
                         break;
                     case "3":
-                        resultDbl = firstNumDbl * secondNumbDbl;
+                        resultDbl = firstNumDbl * secondNumDbl;
                         eqString = $"{firstNumStr} * {secondNumStr} = {resultDbl.ToString()}";
                         break;
                     case "4":
-                        resultDbl = firstNumDbl / secondNumbDbl;
+                        resultDbl = firstNumDbl / secondNumDbl;
                         eqString = $"{firstNumStr} ÷ {secondNumStr} = {resultDbl.ToString()}";
                         break;
                     default:
@@ -65,6 +76,7 @@ namespace ConsoleCalc
                     Console.WriteLine("\nYour equation:");
                     Console.WriteLine(eqString);
                 }
+
                 else
                 {
 
@@ -74,9 +86,8 @@ namespace ConsoleCalc
                         eqCounter++;
                     }
 
-                    else if (eqCounter == 5)
+                    else
                     {
-                        Console.WriteLine("This shit is filled up!");
                         pastEqs.RemoveAt(0);
                         pastEqs.Add(eqString);
                     }
@@ -98,7 +109,7 @@ namespace ConsoleCalc
 
             } while (playAgain == true);
 
-            Console.WriteLine("Thanks for playing! Press any button to close this app.");
+            Console.WriteLine("\nThanks for playing! Press any button to close this app.");
             Console.ReadLine();
         }
     }
