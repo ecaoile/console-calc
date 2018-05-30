@@ -38,6 +38,11 @@ namespace ConsoleCalc
 
                 Console.WriteLine("\nPlease enter the second number.");
                 string secondNumStr = Console.ReadLine();
+                while (opChoice == "4" && secondNumStr == "0")
+                {
+                    Console.WriteLine("\nError: cannot divide by zero. Please enter a different number.");
+                    secondNumStr = Console.ReadLine();
+                }
 
                 while (!double.TryParse(secondNumStr, out secondNumDbl))
                 {
