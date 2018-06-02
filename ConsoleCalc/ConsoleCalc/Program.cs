@@ -12,6 +12,7 @@ namespace ConsoleCalc
             int eqCounter = 0;
             double firstNumDbl = 0;
             double secondNumDbl = 0;
+
             do
             {
                 Console.WriteLine("What would you like to do? Choose a number between 1 and 4.");
@@ -39,6 +40,12 @@ namespace ConsoleCalc
                 Console.WriteLine("\nPlease enter the second number.");
                 string secondNumStr = Console.ReadLine();
 
+                while (opChoice == "4" && secondNumStr == "0")
+                {
+                    Console.WriteLine("\nError: cannot divide by zero. Please enter a different number.");
+                    secondNumStr = Console.ReadLine();
+                }
+
                 while (!double.TryParse(secondNumStr, out secondNumDbl))
                 {
                     Console.WriteLine($"{secondNumStr} is not a valid number. Please try again.");
@@ -47,6 +54,7 @@ namespace ConsoleCalc
 
                 double resultDbl = 0;
                 string eqString = "";
+
                 switch (opChoice)
                 {
                     case "1":
